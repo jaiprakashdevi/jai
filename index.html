@@ -626,7 +626,7 @@
     <!-- Hero Section -->
     <section id="hero">
         <div class="container hero-content">
-            <h1>Hi, I'm <span>JAI PRAKASH</span> <span>M</span>.<span>D</span>.</span></h1>
+            <h1>Hi, I'm <span>JAI PRAKASH</span><span>M</span>.<span>D</span>.</span></h1>
             <p>Web Developer | Server Creator</p>
             <a href="#contact" class="btn">Contact Me</a>
             <div class="social-icons">
@@ -819,26 +819,7 @@
 
     <!-- JavaScript -->
     <script>
-        // Rotating favicon
-let angle = 0;
-setInterval(() => {
-    angle = (angle + 2) % 360;
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-    canvas.width = 32;
-    canvas.height = 32;
-    
-    // Draw rotated image
-    ctx.translate(16, 16);
-    ctx.rotate(angle * Math.PI / 180);
-    const img = new Image();
-    img.src = "https://i.ibb.co/your-image-path.png";
-    ctx.drawImage(img, -16, -16, 32, 32);
-    
-    // Update favicon
-    document.querySelector("link[rel='icon']").href = canvas.toDataURL();
-}, 100);
-        // Mobile Navigation Toggle
+      // Mobile Navigation Toggle
         const hamburger = document.getElementById('hamburger');
         const nav = document.getElementById('nav');
 
