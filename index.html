@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JAI PRAKASH M D</title>
-    <link rel="icon" href="favicon.ico" type="image/png">
-    <style>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+<style>
         /* CSS Reset */
         * {
             margin: 0;
@@ -371,7 +372,24 @@
             font-size: 0.8rem;
             font-weight: 600;
         }
+/* Special accent for this project */
+.project-card:nth-child(3) { /* Change number based on position */
+    border: 2px solid #4fc3f7;
+    position: relative;
+}
 
+.project-card:nth-child(3)::after {
+    content: "New!";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #4fc3f7;
+    color: #121212;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
         /* Contact Section */
         #contact {
             background: #121212;
@@ -632,7 +650,9 @@
             <div class="social-icons">
                 <a href="https://www.linkedin.com/in/jai-prakash-m-d-70b443275" target="_blank"><i class="fab fa-linkedin"></i></a>
                 <a href="https://wa.me/916379570398" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                <a href="https://instagram.com/jaiprakashmd" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://instagram.com/jaiprakashmd" target="_blank">
+                <i class="fab fa-instagram"></i>
+                </a>
             </div>
         </div>
     </section>
@@ -744,8 +764,23 @@
                             <span>Freelance</span>
                             <span>Portfolio</span>
                         </div>
-                        <a href="fiverr.html" class="btn" target="_blank">View Project</a>
+                        <a href="https://jaiprakashmd18.github.io/fiverr-freelancer/" class="btn" target="_blank">View Project</a>
                     </div>
+                    <div class="project-card">
+    <div class="project-img">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Webistzu">
+    </div>
+    <div class="project-info">
+        <h3>Webistzu</h3>
+        <p>Web presence broker helping businesses establish their digital footprint with custom solutions.</p>
+        <div class="project-tags">
+            <span>Web Development</span>
+            <span>Digital Presence</span>
+            <span>Brokerage</span>
+        </div>
+        <a href="https://webistzu.com" class="btn" target="_blank">Visit Project</a>
+    </div>
+</div>
                 </div>
             </div>
         </div>
@@ -764,7 +799,8 @@
                     <div class="social-icons">
                         <a href="https://www.linkedin.com/in/jai-prakash-m-d-70b443275" target="_blank"><i class="fab fa-linkedin"></i></a>
                         <a href="https://wa.me/916379570398" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://instagram.com/jaiprakashmd" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://instagram.com/jaiprakashmd" target="_blank">
+                        <i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 <div class="contact-form">
@@ -794,10 +830,10 @@
     <label for="email">Email</label>
     <input type="email" id="email" name="email" required>
   </div>
-  <div class="form-group">
+   <div class="form-group">
         <label for="message">Message</label>
         <textarea id="message" name="message" required></textarea>
-   </div>
+    </div>
   <!-- Keep all other fields exactly as they are -->
   
   <button type="submit" class="btn">Send Message</button>
@@ -819,7 +855,26 @@
 
     <!-- JavaScript -->
     <script>
-      // Mobile Navigation Toggle
+        // Rotating favicon
+let angle = 0;
+setInterval(() => {
+    angle = (angle + 2) % 360;
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = 32;
+    canvas.height = 32;
+    
+    // Draw rotated image
+    ctx.translate(16, 16);
+    ctx.rotate(angle * Math.PI / 180);
+    const img = new Image();
+    img.src = "https://i.ibb.co/your-image-path.png";
+    ctx.drawImage(img, -16, -16, 32, 32);
+    
+    // Update favicon
+    document.querySelector("link[rel='icon']").href = canvas.toDataURL();
+}, 100);
+        // Mobile Navigation Toggle
         const hamburger = document.getElementById('hamburger');
         const nav = document.getElementById('nav');
 
@@ -873,7 +928,7 @@
         // Set current year in footer
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        
+
         // MeCHAT button alert
         const mechatBtn = document.getElementById('mechat-btn');
         mechatBtn.addEventListener('click', function(e) {
