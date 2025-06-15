@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JAI PRAKASH M D</title>
     <!-- Favicon -->
-        <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" href="favicon.png">
 <style>
         /* CSS Reset */
         * {
@@ -373,6 +372,7 @@
             font-size: 0.8rem;
             font-weight: 600;
         }
+
 /* Special accent for this project */
 .project-card:nth-child(3) { /* Change number based on position */
     border: 2px solid #4fc3f7;
@@ -390,6 +390,22 @@
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: bold;
+}
+/* Ensure consistent card heights */
+.project-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.project-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-tags {
+    margin-top: auto;
 }
         /* Contact Section */
         #contact {
@@ -739,52 +755,57 @@
     <section id="projects">
         <div class="container">
             <h2>My Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="MeCHAT">
-                    </div>
-                    <div class="project-info">
-                        <h3>MeCHAT</h3>
-                        <p>A messaging application for secure and fast communication.</p>
-                        <div class="project-tags">
-                            <span>Web App</span>
-                            <span>Messaging</span>
-                        </div>
-                        <a href="#" class="btn" id="mechat-btn">Coming Soon</a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Fiverr Freelancer">
-                    </div>
-                    <div class="project-info">
-                        <h3>Fiverr Freelancer</h3>
-                        <p>A platform showcasing freelance services and skills.</p>
-                        <div class="project-tags">
-                            <span>Freelance</span>
-                            <span>Portfolio</span>
-                        </div>
-                        <a href="https://jaiprakashmd18.github.io/fiverr-freelancer/" class="btn" target="_blank">View Project</a>
-                    </div>
-                    <div class="project-card">
-    <div class="project-img">
-        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Webistzu">
-    </div>
-    <div class="project-info">
-        <h3>Webistzu</h3>
-        <p>Web presence broker helping businesses establish their digital footprint with custom solutions.</p>
-        <div class="project-tags">
-            <span>Web Development</span>
-            <span>Digital Presence</span>
-            <span>Brokerage</span>
+            <!-- In your projects section (replace existing code) -->
+<div class="projects-grid">
+    <!-- Project 1: MeCHAT -->
+    <div class="project-card">
+        <div class="project-img">
+            <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="MeCHAT">
         </div>
-        <a href="https://webistzu.com" class="btn" target="_blank">Visit Project</a>
+        <div class="project-info">
+            <h3>MeCHAT</h3>
+            <p>A messaging application for secure and fast communication.</p>
+            <div class="project-tags">
+                <span>Web App</span>
+                <span>Messaging</span>
+            </div>
+            <a href="#" class="btn" id="mechat-btn">Coming Soon</a>
+        </div>
+    </div>
+
+    <!-- Project 2: Fiverr Freelancer -->
+    <div class="project-card">
+        <div class="project-img">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Fiverr Freelancer">
+        </div>
+        <div class="project-info">
+            <h3>Fiverr Freelancer</h3>
+            <p>A platform showcasing freelance services and skills.</p>
+            <div class="project-tags">
+                <span>Freelance</span>
+                <span>Portfolio</span>
+            </div>
+            <a href="fiverr.html" class="btn" target="_blank">View Project</a>
+        </div>
+    </div>
+
+    <!-- Project 3: Webistzu -->
+    <div class="project-card">
+        <div class="project-img">
+            <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Webistzu">
+        </div>
+        <div class="project-info">
+            <h3>Webistzu</h3>
+            <p>Web presence broker helping businesses establish their digital footprint.</p>
+            <div class="project-tags">
+                <span>Web Development</span>
+                <span>Digital Presence</span>
+                <span>Brokerage</span>
+            </div>
+            <a href="https://webistzu.com" class="btn" target="_blank">Visit Project</a>
+        </div>
     </div>
 </div>
-                </div>
-            </div>
-        </div>
     </section>
 
     <!-- Contact Section -->
