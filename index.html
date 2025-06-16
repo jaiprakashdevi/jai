@@ -199,6 +199,46 @@
         }
 
         /* About Section */
+/* About Section Buttons */
+.about-buttons {
+    display: flex;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.about-btn {
+    padding: 10px 20px;
+    background: transparent;
+    border: 2px solid #4fc3f7;
+    color: #4fc3f7;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.about-btn:hover {
+    background: rgba(79, 195, 247, 0.1);
+}
+
+.about-btn.active {
+    background: #4fc3f7;
+    color: #121212;
+}
+
+.about-content {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.about-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
         #about {
             background: #1e1e1e;
         }
@@ -684,13 +724,31 @@
                 <div class="about-img">
                     <img src="https://i.ibb.co/XZqxGjwt/20250609-155113.png" alt="JAI PRAKASH M.D." style="width: 300px; height: 350px; border-radius: 10px; object-fit: cover;">
                 </div>
-                <div class="about-text">
-                    <h3>Who am I?</h3>
-                    <p>I'm Jai Prakash, a web developer passionate about creating digital solutions. My journey began with building simple static pages and evolved into developing full-stack applications.</p>
-                    <p>I specialize in crafting responsive websites and configuring server environments. What started as curiosity has grown into creating functional web systems that solve real problems.</p>
-                    <p>When I'm not coding, I enjoy exploring new technologies and mentoring beginners. I believe in building solutions that are as efficient behind the scenes as they are visually appealing.</p>
-                    <a href="#contact" class="btn">Get In Touch</a>
-                </div>
+<!-- In your About Section (replace the existing about-text div) -->
+<div class="about-text">
+    <h3>Who am I?</h3>
+    <p>I'm Jai Prakash, a medical student with a passion for technology and web development.</p>
+    
+    <div class="about-buttons">
+        <button class="about-btn" data-content="developer">Web Developer</button>
+        <button class="about-btn active" data-content="medical">Medical Career</button>
+    </div>
+    
+    <div class="about-content" id="developer-content">
+        <p>I'm passionate about creating digital solutions. My journey began with building simple static pages and evolved into developing full-stack applications.</p>
+        <p>I specialize in crafting responsive websites and configuring server environments. What started as curiosity has grown into creating functional web systems that solve real problems.</p>
+        <p>When I'm not studying medicine, I enjoy coding, exploring new technologies and mentoring beginners in web development.</p>
+    </div>
+    
+    <div class="about-content active" id="medical-content">
+        <p>I'm currently pursuing my MD (MBBS) degree at South Eastern University (SEU), where I'm deepening my knowledge of medical science and patient care.</p>
+        <p>My medical education complements my technical skills, allowing me to approach healthcare challenges with a unique perspective that combines medical knowledge with technological solutions.</p>
+        <p>I'm particularly interested in how technology can enhance healthcare delivery, medical education, and patient outcomes. This dual expertise positions me to potentially bridge the gap between medicine and technology in innovative ways.</p>
+        <p>When I'm not in lectures or clinical rotations, I continue to work on web development projects that often intersect with medical applications.</p>
+    </div>
+    
+    <a href="#contact" class="btn">Get In Touch</a>
+</div>
             </div>
         </div>
     </section>
@@ -907,7 +965,22 @@ setInterval(() => {
             hamburger.innerHTML = nav.classList.contains('show') ? 
                 '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         });
-
+// About section tabs
+const aboutButtons = document.querySelectorAll('.about-btn');
+aboutButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        // Remove active class from all buttons and content
+        document.querySelectorAll('.about-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.about-content').forEach(content => content.classList.remove('active'));
+        
+        // Add active class to clicked button
+        button.classList.add('active');
+        
+        // Show corresponding content
+        const contentId = button.getAttribute('data-content') + '-content';
+        document.getElementById(contentId).classList.add('active');
+    });
+});
         // Close mobile menu when clicking a link
         document.querySelectorAll('nav ul li a').forEach(link => {
             link.addEventListener('click', () => {
