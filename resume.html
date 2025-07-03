@@ -1,13 +1,10 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jai Prakash M D - Web Developer & Medical Student</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
     * {
       margin: 0;
@@ -232,7 +229,6 @@
 </head>
 <body>
   <div class="container">
-    <!-- Your resume content remains the same as before -->
     <header>
       <div>
         <h1>Jai Prakash M D</h1>
@@ -297,6 +293,25 @@
     </section>
 
     <section class="section">
+      <h2>Medical Skills</h2>
+      <div class="skills-container">
+        <span class="skill-tag">Physiology</span>
+        <span class="skill-tag">Embryology</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Aviation Skills</h2>
+      <div class="skills-container">
+        <span class="skill-tag">Aviation Management</span>
+        <span class="skill-tag">Flight Operations</span>
+        <span class="skill-tag">Air Traffic Control Basics</span>
+        <span class="skill-tag">Aviation Safety</span>
+        <span class="skill-tag">Aircraft Systems</span>
+      </div>
+    </section>
+
+    <section class="section">
       <h2>Projects</h2>
       <div class="project">
         <div class="project-title">
@@ -352,6 +367,7 @@
         <span class="skill-tag">Animation</span>
         <span class="skill-tag">Entrepreneurship</span>
         <span class="skill-tag">Medical Technology</span>
+        <span class="skill-tag">Aviation</span>
       </div>
     </section>
   </div>
@@ -369,9 +385,6 @@
     </div>
     <div class="download-option" data-format="pdf">
       <i class="fas fa-file-pdf"></i> Download as PDF
-    </div>
-    <div class="download-option" data-format="html">
-      <i class="fas fa-file-code"></i> Download as HTML
     </div>
   </div>
 
@@ -409,92 +422,23 @@
         const format = this.getAttribute('data-format');
         downloadOptions.classList.remove('show');
         
-        switch(format) {
-          case 'html':
-            downloadHTML();
-            break;
-          case 'pdf':
-            downloadPDF();
-            break;
-          case 'png':
-            downloadImage('png');
-            break;
-          case 'jpg':
-            downloadImage('jpg');
-            break;
-        }
-      });
-    });
+        // Replace these with your actual file URLs
+        const fileUrls = {
+          png: 'resume.png',
+          jpg: 'resume.jpg',
+          pdf: 'resume.pdf'
+        };
 
-    function downloadHTML() {
-      // Get the HTML content
-      const htmlContent = document.documentElement.outerHTML;
-      
-      // Create a Blob with the HTML content
-      const blob = new Blob([htmlContent], { type: 'text/html' });
-      
-      // Create a download link
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'JAI PRAKASH M D(RESUME).html';
-      
-      // Trigger the download
-      document.body.appendChild(a);
-      a.click();
-      
-      // Clean up
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-    }
-
-    function downloadImage(format) {
-      const container = document.querySelector('.container');
-      
-      // Add a small delay to ensure all fonts are loaded
-      setTimeout(() => {
-        html2canvas(container, {
-          scale: 2, // Higher quality
-          logging: false,
-          useCORS: true,
-          allowTaint: true,
-          backgroundColor: '#0f172a'
-        }).then(canvas => {
-          const image = canvas.toDataURL(`image/${format}`);
+        if (fileUrls[format]) {
           const link = document.createElement('a');
-          link.href = image;
-          link.download = `JAI PRAKASH M D(RESUME).${format}`;
+          link.href = fileUrls[format];
+          link.download = `JAI_PRAKASH_MD_RESUME.${format}`;
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);
-        });
-      }, 500);
-    }
-
-    function downloadPDF() {
-      const { jsPDF } = window.jspdf;
-      const container = document.querySelector('.container');
-      
-      // Add a small delay to ensure all fonts are loaded
-      setTimeout(() => {
-        html2canvas(container, {
-          scale: 2, // Higher quality
-          logging: false,
-          useCORS: true,
-          allowTaint: true,
-          backgroundColor: '#0f172a'
-        }).then(canvas => {
-          const imgData = canvas.toDataURL('image/png');
-          const pdf = new jsPDF('p', 'mm', 'a4');
-          const imgProps = pdf.getImageProperties(imgData);
-          const pdfWidth = pdf.internal.pageSize.getWidth();
-          const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-          
-          pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-          pdf.save('JAI PRAKASH M D(RESUME).pdf');
-        });
-      }, 500);
-    }
+        }
+      });
+    });
   </script>
 </body>
 </html>
